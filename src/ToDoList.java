@@ -11,14 +11,15 @@ public class ToDoList implements ActionListener {
 
     JButton button;
     JTextField textFieldTodo;
+    JFrame todoView;
 
     public ToDoList() {
-        JFrame todoView = new JFrame();
+        todoView = new JFrame();
         todoView.setTitle("To Do List");
         todoView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         todoView.setResizable(false);
         todoView.setSize(400,700);
-        todoView.setLayout(new FlowLayout());
+        todoView.setLayout(new BoxLayout(todoView.getContentPane(), BoxLayout.Y_AXIS));
 
         ImageIcon image = new ImageIcon("Assets/appIcon.png");
         todoView.setIconImage(image.getImage());
@@ -38,9 +39,17 @@ public class ToDoList implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == button) {
-            System.out.println(textFieldTodo.getText());
+            getTodoElement(textFieldTodo.getText());
+            textFieldTodo.setText("");
         }
 
+    }
+
+    public void getTodoElement(String text) {
+        JLabel todoElement = new JLabel(text);
+        todoView.add(todoElement);
+        todoView.revalidate();
+        todoView.repaint();
     }
 
 }
