@@ -15,9 +15,13 @@ public class ToDoList implements ActionListener {
     public ToDoList() {
         JFrame todoView = new JFrame();
         todoView.setTitle("To Do List");
+        todoView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         todoView.setResizable(false);
         todoView.setSize(400,700);
         todoView.setLayout(new FlowLayout());
+
+        ImageIcon image = new ImageIcon("Assets/appIcon.png");
+        todoView.setIconImage(image.getImage());
 
         button = new JButton("Add");
         button.addActionListener(this);
