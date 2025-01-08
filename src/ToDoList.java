@@ -6,38 +6,45 @@ import java.awt.event.ActionListener;
 
 public class ToDoList implements ActionListener {
     public static void main(String[] args) {
-        ToDoList toDoList = new ToDoList();
+        ToDoList todoList = new ToDoList();
     }
 
     JFrame todoView;
     JButton button;
     JTextField textFieldTodo;
     JPanel inputPanel;
-
+    JPanel todoListPanel;
 
     public ToDoList() {
+        // Window
         todoView = new JFrame();
         todoView.setTitle("To Do List");
         todoView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //todoView.setResizable(false);
-        todoView.setSize(400,700);
-        todoView.setLayout(new BoxLayout(todoView.getContentPane(), BoxLayout.Y_AXIS));
-
-        inputPanel = new JPanel();
-
+        todoView.setLayout(new BorderLayout());
+        // Icon
         ImageIcon image = new ImageIcon("Assets/appIcon.png");
         todoView.setIconImage(image.getImage());
+
+        inputPanel = new JPanel();
+        inputPanel.setLayout(new FlowLayout());
+
+        todoListPanel = new JPanel();
+        todoListPanel.setLayout(new BorderLayout());
+
+
 
         button = new JButton("Add");
         button.addActionListener(this);
         inputPanel.add(button);
 
         textFieldTodo = new JTextField();
-        textFieldTodo.setPreferredSize(new Dimension(400,40));
+        textFieldTodo.setPreferredSize(new Dimension(380,40));
         inputPanel.add(textFieldTodo);
 
-        todoView.add(inputPanel);
+        todoView.add(inputPanel, BorderLayout.NORTH);
+        todoView.add(todoListPanel, BorderLayout.CENTER);
         todoView.pack();
+        todoView.setSize(400,700);
         todoView.setVisible(true);
 
     }
@@ -52,8 +59,8 @@ public class ToDoList implements ActionListener {
 
     public void getTodoElement(String text) {
         JLabel todoElement = new JLabel(text);
-
-        todoView.add(todoElement);
+        todoElement.setFont(todoElement.getFont().deriveFont((float) 20));
+        todoListPanel.add(todoElement, BorderLayout.NORTH);
         todoView.revalidate();
         todoView.repaint();
     }
