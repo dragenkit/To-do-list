@@ -29,7 +29,7 @@ public class ToDoList implements ActionListener {
         inputPanel.setLayout(new FlowLayout());
 
         todoListPanel = new JPanel();
-        todoListPanel.setLayout(new BorderLayout());
+        todoListPanel.setLayout(new BoxLayout(todoListPanel, BoxLayout.Y_AXIS));
 
 
 
@@ -44,7 +44,7 @@ public class ToDoList implements ActionListener {
         todoView.add(inputPanel, BorderLayout.NORTH);
         todoView.add(todoListPanel, BorderLayout.CENTER);
         todoView.pack();
-        todoView.setSize(400,700);
+        todoView.setSize(500,700);
         todoView.setVisible(true);
 
     }
@@ -58,7 +58,7 @@ public class ToDoList implements ActionListener {
     }
 
     public void getTodoElement(String text) {
-        JLabel todoElement = new JLabel(text);
+        JLabel todoElement = new JLabel("•" + text);
         todoElement.setFont(todoElement.getFont().deriveFont((float) 20));
         todoListPanel.add(todoElement, BorderLayout.NORTH);
         todoView.revalidate();
