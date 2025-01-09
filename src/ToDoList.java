@@ -59,6 +59,10 @@ public class ToDoList implements ActionListener {
     }
 
     public void getTodoElement(String text) {
+        if(text == null || text.trim().isEmpty()){
+            JOptionPane.showMessageDialog(todoView, "Text field cannot be Empty");
+            return;
+        }
         JLabel todoElement = new JLabel("•" + text);
         todoElement.setFont(todoElement.getFont().deriveFont((float) 20));
         todoListPanel.add(todoElement, BorderLayout.NORTH);
