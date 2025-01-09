@@ -35,6 +35,7 @@ public class ToDoList implements ActionListener {
 
         button = new JButton("Add");
         button.addActionListener(this);
+        button.setPreferredSize(new Dimension(90,40));
         inputPanel.add(button);
 
         textFieldTodo = new JTextField();
