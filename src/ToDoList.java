@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.color.*;
 
 
 public class ToDoList implements ActionListener {
@@ -14,6 +15,7 @@ public class ToDoList implements ActionListener {
     JTextField textFieldTodo;
     JPanel inputPanel;
     JPanel todoListPanel;
+    Color brown, lightBrown;
 
     public ToDoList() {
         // Window
@@ -25,11 +27,17 @@ public class ToDoList implements ActionListener {
         ImageIcon image = new ImageIcon("Assets/appIcon.png");
         todoView.setIconImage(image.getImage());
 
+        //Color
+        brown = new Color(128, 64, 0);
+        lightBrown = new Color(191, 128, 64);
+
         inputPanel = new JPanel();
         inputPanel.setLayout(new FlowLayout());
+        inputPanel.setBackground(brown);
 
         todoListPanel = new JPanel();
         todoListPanel.setLayout(new BoxLayout(todoListPanel, BoxLayout.Y_AXIS));
+        todoListPanel.setBackground(lightBrown);
 
 
 
