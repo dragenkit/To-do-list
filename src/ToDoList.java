@@ -6,9 +6,6 @@ import java.awt.color.*;
 
 
 public class ToDoList implements ActionListener {
-    public static void main(String[] args) {
-        ToDoList todoList = new ToDoList();
-    }
 
     JFrame todoView;
     JButton button;
