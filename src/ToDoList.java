@@ -71,6 +71,14 @@ public class ToDoList implements ActionListener {
         JLabel todoElement = new JLabel("•" + text);
         todoElement.setFont(todoElement.getFont().deriveFont((float) 20));
         todoElement.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        todoElement.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                todoListPanel.remove(todoElement);
+                todoView.revalidate();
+                todoView.repaint();
+            }
+        });
         todoListPanel.add(todoElement);
         todoView.revalidate();
         todoView.repaint();
