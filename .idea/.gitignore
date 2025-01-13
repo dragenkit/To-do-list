@@ -5,3 +5,4 @@
 .idea/
 /out/
 bin/
+/lib/sqlite-jdbc-3.47.2.0.jar

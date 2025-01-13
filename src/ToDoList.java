@@ -70,7 +70,8 @@ public class ToDoList implements ActionListener {
         }
         JLabel todoElement = new JLabel("•" + text);
         todoElement.setFont(todoElement.getFont().deriveFont((float) 20));
-        todoListPanel.add(todoElement, BorderLayout.NORTH);
+        todoElement.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        todoListPanel.add(todoElement);
         todoView.revalidate();
         todoView.repaint();
     }
