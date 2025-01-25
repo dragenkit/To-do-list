@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.color.*;
 
 
 public class ToDoList implements ActionListener {
@@ -24,14 +23,16 @@ public class ToDoList implements ActionListener {
         ImageIcon image = new ImageIcon("Assets/appIcon.png");
         todoView.setIconImage(image.getImage());
 
-        //Color
+        // Color
         brown = new Color(128, 64, 0);
         lightBrown = new Color(191, 128, 64);
 
+        // Panel where the Todo item is written
         inputPanel = new JPanel();
         inputPanel.setLayout(new FlowLayout());
         inputPanel.setBackground(brown);
 
+        //Panel where the to do list is shown
         todoListPanel = new JPanel();
         todoListPanel.setLayout(new BoxLayout(todoListPanel, BoxLayout.Y_AXIS));
         todoListPanel.setBackground(lightBrown);
@@ -57,18 +58,18 @@ public class ToDoList implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == button) {
-            getTodoElement(textFieldTodo.getText());
+            addTodoElement(textFieldTodo.getText());
             textFieldTodo.setText("");
         }
 
     }
 
-    public void getTodoElement(String text) {
+    public void addTodoElement(String text) {
         if(text == null || text.trim().isEmpty()){
             JOptionPane.showMessageDialog(todoView, "Text field cannot be Empty");
             return;
         }
-        JLabel todoElement = new JLabel("•" + text);
+        JLabel todoElement = new JLabel("• " + text);
         todoElement.setFont(todoElement.getFont().deriveFont((float) 20));
         todoElement.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
         todoElement.addMouseListener(new java.awt.event.MouseAdapter() {
