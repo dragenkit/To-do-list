@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 
 public class ToDoList implements ActionListener {
@@ -46,6 +45,26 @@ public class ToDoList implements ActionListener {
 
         textFieldTodo = new JTextField();
         textFieldTodo.setPreferredSize(new Dimension(380,40));
+        textFieldTodo.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    addTodoElement(textFieldTodo.getText());
+                    textFieldTodo.setText("");
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+
+        });
         inputPanel.add(textFieldTodo);
 
         todoView.add(inputPanel, BorderLayout.NORTH);
