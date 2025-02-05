@@ -8,8 +8,7 @@ public class ToDoList implements ActionListener {
     JFrame todoView;
     JButton button;
     JTextField textFieldTodo;
-    JPanel inputPanel;
-    JPanel todoListPanel;
+    JPanel inputPanel, todoListPanel, completedTodos;
     Color brown, lightBrown;
 
     public ToDoList() {
@@ -31,11 +30,16 @@ public class ToDoList implements ActionListener {
         inputPanel.setLayout(new FlowLayout());
         inputPanel.setBackground(brown);
 
-        //Panel where the to do list is shown
+        // Panel where the to do list is shown
         todoListPanel = new JPanel();
         todoListPanel.setLayout(new BoxLayout(todoListPanel, BoxLayout.Y_AXIS));
         todoListPanel.setBackground(lightBrown);
 
+        // Panel where the completed task are shown
+        completedTodos = new JPanel();
+        completedTodos.setLayout(new BoxLayout(completedTodos, BoxLayout.Y_AXIS));
+        completedTodos.setBackground(Color.red);
+        //completedTodos.add(new JLabel("test"));
 
 
         button = new JButton("Add");
@@ -69,6 +73,7 @@ public class ToDoList implements ActionListener {
 
         todoView.add(inputPanel, BorderLayout.NORTH);
         todoView.add(todoListPanel, BorderLayout.CENTER);
+        todoView.add(completedTodos, BorderLayout.SOUTH);
         todoView.pack();
         todoView.setSize(500,700);
         todoView.setVisible(true);
