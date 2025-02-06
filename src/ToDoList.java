@@ -38,8 +38,7 @@ public class ToDoList implements ActionListener {
         // Panel where the completed task are shown
         completedTodos = new JPanel();
         completedTodos.setLayout(new BoxLayout(completedTodos, BoxLayout.Y_AXIS));
-        completedTodos.setBackground(Color.red);
-        //completedTodos.add(new JLabel("test"));
+        completedTodos.setBackground(lightBrown);
 
 
         button = new JButton("Add");
@@ -99,6 +98,8 @@ public class ToDoList implements ActionListener {
         todoElement.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
+                todoElement.setText(("<html><strike>" + todoElement.getText() + "</strike></html>"));
+                completedTodos.add(todoElement);
                 todoListPanel.remove(todoElement);
                 todoView.revalidate();
                 todoView.repaint();
