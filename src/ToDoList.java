@@ -9,7 +9,7 @@ public class ToDoList implements ActionListener {
     JButton button;
     JTextField textFieldTodo;
     JPanel inputPanel, todoListPanel, completedTodos;
-    Color brown, lightBrown;
+    Color brown, lightBrown, black;
 
     public ToDoList() {
         // Window
@@ -22,32 +22,35 @@ public class ToDoList implements ActionListener {
         todoView.setIconImage(image.getImage());
 
         // Color
+        black = new Color(38, 38, 38);
         brown = new Color(128, 64, 0);
         lightBrown = new Color(191, 128, 64);
 
         // Panel where the Todo item is written
         inputPanel = new JPanel();
         inputPanel.setLayout(new FlowLayout());
-        inputPanel.setBackground(brown);
+        inputPanel.setBackground(Color.black);
 
         // Panel where the to do list is shown
         todoListPanel = new JPanel();
         todoListPanel.setLayout(new BoxLayout(todoListPanel, BoxLayout.Y_AXIS));
-        todoListPanel.setBackground(lightBrown);
+        todoListPanel.setBackground(black);
 
         // Panel where the completed task are shown
         completedTodos = new JPanel();
         completedTodos.setLayout(new BoxLayout(completedTodos, BoxLayout.Y_AXIS));
-        completedTodos.setBackground(lightBrown);
+        completedTodos.setBackground(black);
 
 
         button = new JButton("Add");
         button.addActionListener(this);
         button.setPreferredSize(new Dimension(90,40));
+        button.setBorderPainted(false);
         inputPanel.add(button);
 
         textFieldTodo = new JTextField();
         textFieldTodo.setPreferredSize(new Dimension(380,40));
+        textFieldTodo.setBorder(BorderFactory.createEmptyBorder());
         textFieldTodo.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -94,6 +97,7 @@ public class ToDoList implements ActionListener {
         }
         JLabel todoElement = new JLabel("• " + text);
         todoElement.setFont(todoElement.getFont().deriveFont((float) 20));
+        todoElement.setForeground(Color.white);
         todoElement.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
         todoElement.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
