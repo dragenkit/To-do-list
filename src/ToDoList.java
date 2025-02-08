@@ -10,6 +10,7 @@ public class ToDoList implements ActionListener {
     JTextField textFieldTodo;
     JPanel inputPanel, todoListPanel, completedTodos;
     Color brown, lightBrown, black;
+    JScrollPane todoScrollPane, completedScrollPane;
 
     public ToDoList() {
         // Window
@@ -35,12 +36,15 @@ public class ToDoList implements ActionListener {
         todoListPanel = new JPanel();
         todoListPanel.setLayout(new BoxLayout(todoListPanel, BoxLayout.Y_AXIS));
         todoListPanel.setBackground(black);
+        // adds todolistpanel to scrollpane
+        todoScrollPane = new JScrollPane(todoListPanel);
 
         // Panel where the completed task are shown
         completedTodos = new JPanel();
         completedTodos.setLayout(new BoxLayout(completedTodos, BoxLayout.Y_AXIS));
         completedTodos.setBackground(black);
 
+        completedScrollPane = new JScrollPane(completedTodos);
 
         button = new JButton("Add");
         button.addActionListener(this);
@@ -74,8 +78,8 @@ public class ToDoList implements ActionListener {
         inputPanel.add(textFieldTodo);
 
         todoView.add(inputPanel, BorderLayout.NORTH);
-        todoView.add(todoListPanel, BorderLayout.CENTER);
-        todoView.add(completedTodos, BorderLayout.SOUTH);
+        todoView.add(todoScrollPane, BorderLayout.CENTER);
+        todoView.add(completedScrollPane, BorderLayout.SOUTH);
         todoView.pack();
         todoView.setSize(500,700);
         todoView.setVisible(true);
