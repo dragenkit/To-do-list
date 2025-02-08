@@ -95,7 +95,7 @@ public class ToDoList implements ActionListener {
             JOptionPane.showMessageDialog(todoView, "Text field cannot be Empty");
             return;
         }
-        JLabel todoElement = new JLabel("• " + text);
+        JLabel todoElement = new JLabel("• " + text.trim());
         todoElement.setFont(todoElement.getFont().deriveFont((float) 20));
         todoElement.setForeground(Color.white);
         todoElement.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
