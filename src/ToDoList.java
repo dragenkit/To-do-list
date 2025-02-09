@@ -38,6 +38,7 @@ public class ToDoList implements ActionListener {
         todoListPanel.setBackground(black);
         // adds todolistpanel to scrollpane
         todoScrollPane = new JScrollPane(todoListPanel);
+        todoScrollPane.setPreferredSize(new Dimension(500, 300));
 
         // Panel where the completed task are shown
         completedTodos = new JPanel();
@@ -45,6 +46,7 @@ public class ToDoList implements ActionListener {
         completedTodos.setBackground(black);
 
         completedScrollPane = new JScrollPane(completedTodos);
+        completedScrollPane.setPreferredSize(new Dimension(500, 300));
 
         button = new JButton("Add");
         button.addActionListener(this);
