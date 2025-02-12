@@ -9,7 +9,7 @@ public class ToDoList implements ActionListener {
     JButton button;
     JTextField textFieldTodo;
     JPanel inputPanel, todoListPanel, completedTodos;
-    Color brown, lightBrown, black;
+    Color black;
     JScrollPane todoScrollPane, completedScrollPane;
 
     public ToDoList() {
@@ -24,8 +24,6 @@ public class ToDoList implements ActionListener {
 
         // Color
         black = new Color(38, 38, 38);
-        brown = new Color(128, 64, 0);
-        lightBrown = new Color(191, 128, 64);
 
         // Panel where the Todo item is written
         inputPanel = new JPanel();
@@ -36,8 +34,10 @@ public class ToDoList implements ActionListener {
         todoListPanel = new JPanel();
         todoListPanel.setLayout(new BoxLayout(todoListPanel, BoxLayout.Y_AXIS));
         todoListPanel.setBackground(black);
-        // adds todolistpanel to scrollpane
+
+        // adds todolist panel to scroll pane
         todoScrollPane = new JScrollPane(todoListPanel);
+        todoScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         todoScrollPane.setPreferredSize(new Dimension(500, 300));
 
         // Panel where the completed task are shown
@@ -45,9 +45,12 @@ public class ToDoList implements ActionListener {
         completedTodos.setLayout(new BoxLayout(completedTodos, BoxLayout.Y_AXIS));
         completedTodos.setBackground(black);
 
+        // adds todolist to completedScrollPane
         completedScrollPane = new JScrollPane(completedTodos);
+        completedScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         completedScrollPane.setPreferredSize(new Dimension(500, 300));
 
+        // adds Button to inputPanel
         button = new JButton("Add");
         button.addActionListener(this);
         button.setPreferredSize(new Dimension(90,40));
@@ -99,6 +102,10 @@ public class ToDoList implements ActionListener {
     public void addTodoElement(String text) {
         if(text == null || text.trim().isEmpty()){
             JOptionPane.showMessageDialog(todoView, "Text field cannot be Empty");
+            return;
+        }
+        if(text.trim().length() > 41){
+            JOptionPane.showMessageDialog(todoView, "Your text is to long please use a shorter one");
             return;
         }
         JLabel todoElement = new JLabel("• " + text.trim());
