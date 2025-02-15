@@ -60,6 +60,7 @@ public class ToDoList implements ActionListener {
         textFieldTodo = new JTextField();
         textFieldTodo.setPreferredSize(new Dimension(380,40));
         textFieldTodo.setBorder(BorderFactory.createEmptyBorder());
+        // when the enter key gets pressed the texfield sends the text
         textFieldTodo.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -100,6 +101,7 @@ public class ToDoList implements ActionListener {
     }
 
     public void addTodoElement(String text) {
+        // when the textfield is empty show box and return
         if(text == null || text.trim().isEmpty()){
             JOptionPane.showMessageDialog(todoView, "Text field cannot be Empty");
             return;
@@ -108,10 +110,15 @@ public class ToDoList implements ActionListener {
             JOptionPane.showMessageDialog(todoView, "Your text is to long please use a shorter one");
             return;
         }
+        //
+        if(text.trim().length() < 41){
+            String[]
+        }
         JLabel todoElement = new JLabel("• " + text.trim());
         todoElement.setFont(todoElement.getFont().deriveFont((float) 20));
         todoElement.setForeground(Color.white);
         todoElement.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        // if todo element is clicked it gets send to the bottom
         todoElement.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
